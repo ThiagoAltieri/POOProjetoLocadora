@@ -25,16 +25,16 @@ public class AlterarCliente {
             String linha;
             while ((linha = reader.readLine()) != null) {
                 String[] partes = linha.split(";");
-                String numeroDeCadastro = partes[1]; // Supondo que o CPF está na segunda posição
+                String numeroDeCadastro = partes[1];
                 if (numeroDeCadastro.equals(cpf)) {
-                    // Cliente encontrado, solicite as novas informações e escreva no arquivo temporário
+
                     System.out.println("Cliente encontrado. Insira as novas informações:");
                     System.out.println("Novo nome: ");
                     String novoNome = scanner.nextLine();
                     System.out.println("Novo número de cadastro: ");
                     String novoNumeroDeCadastro = scanner.nextLine();
 
-                    linha = novoNome + ";" + novoNumeroDeCadastro + ";" + partes[2]; // Mantém o tipo de documento
+                    linha = novoNome + ";" + novoNumeroDeCadastro + ";" + partes[2];
 
                     System.out.println("Cliente alterado com sucesso.");
                 }
@@ -45,7 +45,7 @@ public class AlterarCliente {
             reader.close();
             writer.close();
 
-            // Renomeia o arquivo temporário para o nome original
+
             arquivo.delete();
             arquivoTemp.renameTo(arquivo);
 

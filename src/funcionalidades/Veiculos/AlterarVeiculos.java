@@ -29,9 +29,9 @@ public class AlterarVeiculos {
             while ((linha = reader.readLine()) != null) {
                 // Dividir a linha em partes
                 String[] partes = linha.split(";");
-                String placaCadastrada = partes[3]; // Supondo que a placa está na quarta posição
+                String placaCadastrada = partes[3];
 
-                // Se a placa na linha corresponder à placa fornecida pelo usuário, solicitar novas informações
+
                 if (placaCadastrada.equals(placa)) {
                     veiculoEncontrado = true;
                     System.out.println("Veículo encontrado. Insira as novas informações:");
@@ -44,28 +44,25 @@ public class AlterarVeiculos {
 
                     System.out.println("Insira o novo ano do veículo: ");
                     int novoAno = scanner.nextInt();
-                    scanner.nextLine(); // Limpar o buffer do scanner
+                    scanner.nextLine();
 
                     System.out.println("Insira o novo tipo de veículo (PEQUENO/MEDIO/SUV): ");
                     String novoTipoStr = scanner.nextLine();
                     Veiculo.TipoDeVeiculo novoTipo = Veiculo.TipoDeVeiculo.valueOf(novoTipoStr.toUpperCase());
 
-                    // Escrever as novas informações no arquivo temporário
+
                     writer.write(novoModelo + ";" + novaMarca + ";" + novoAno + ";" +
                             placa + ";" + novoTipo);
                     writer.newLine();
                 } else {
-                    // Se não for a placa do veículo a ser alterado, copiar a linha original para o arquivo temporário
                     writer.write(linha);
                     writer.newLine();
                 }
             }
 
-            // Fechar os arquivos
             reader.close();
             writer.close();
 
-            // Renomear o arquivo temporário para substituir o arquivo original
             if (veiculoEncontrado) {
                 arquivo.delete();
                 arquivoTemporario.renameTo(arquivo);

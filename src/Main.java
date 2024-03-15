@@ -1,16 +1,13 @@
 package funcionalidades;
 
-
-// TODO criar uma forma de solução para caso a pessoa inclua o tipo do veículo fora das opções do enum
-
-import funcionalidades.Aluguel.AluguelCPF.AluguelCPF;
-import funcionalidades.Aluguel.AluguelCPF.MenuAluguelCPF;
-import funcionalidades.Aluguel.AluguelCPF.ValidaClienteEVeiculo;
 import funcionalidades.Clientes.AlterarCliente;
 import funcionalidades.Clientes.CadastroClientes;
 import funcionalidades.Veiculos.AlterarVeiculos;
 import funcionalidades.Veiculos.BuscarVeiculos;
 import funcionalidades.Veiculos.CadastroVeiculos;
+import funcionalidades.Aluguel.AluguelCPF.Menu;
+import funcionalidades.Aluguel.AluguelCNPJ.MenuCNPJ;
+
 
 import java.util.Scanner;
 
@@ -20,12 +17,12 @@ public class Main {
 
         CadastroClientes cadastroClientes = new CadastroClientes();
         AlterarCliente alterarCliente = new AlterarCliente();
-        CadastroVeiculos cadastroVeiculos = new CadastroVeiculos(); // Adicionando instância de CadastroVeiculos
-        BuscarVeiculos buscarVeiculos = new BuscarVeiculos(); // Adicionando instância de BuscarVeiculos
+        CadastroVeiculos cadastroVeiculos = new CadastroVeiculos();
+        BuscarVeiculos buscarVeiculos = new BuscarVeiculos();
         AlterarVeiculos alterarVeiculos = new AlterarVeiculos();
-        AluguelCPF aluguelCPF = new AluguelCPF();
-        MenuAluguelCPF menuAluguelCPF = new MenuAluguelCPF();
-        ValidaClienteEVeiculo validaClienteEVeiculo = new ValidaClienteEVeiculo();
+
+        Menu menuCPF = new Menu();
+        MenuCNPJ menuCNPJ = new MenuCNPJ();
 
         int opcao;
         do {
@@ -44,13 +41,13 @@ public class Main {
 
             switch (opcao) {
                 case 1:
-                    cadastroVeiculos.cadastrarVeiculo(); // Chamar método para cadastrar veículo
+                    cadastroVeiculos.cadastrarVeiculo();
                     break;
                 case 2:
-                    alterarVeiculos.alterarVeiculo();// Chamar método para alterar veículo cadastrado
+                    alterarVeiculos.alterarVeiculo();
                     break;
                 case 3:
-                    buscarVeiculos.buscarVeiculosPorNome(); // Chamar método para buscar veículos por parte do nome
+                    buscarVeiculos.buscarVeiculosPorNome();
                     break;
                 case 4:
                     cadastroClientes.salvarCliente();
@@ -61,7 +58,19 @@ public class Main {
                     alterarCliente.alterarClientePorCPF(cpf);
                     break;
                 case 6:
-                    ;
+                    System.out.println("Você é uma pessoa física ou pessoa jurídica?");
+                    System.out.println("1. Pessoa Física");
+                    System.out.println("2. Pessoa Jurídica");
+                    int tipoCliente = scanner.nextInt();
+                    scanner.nextLine();
+
+                    if (tipoCliente == 1) {
+                        menuCPF.executarMenu();
+                    } else if (tipoCliente == 2) {
+                        menuCNPJ.executarMenu();
+                    } else {
+                        System.out.println("Opção inválida. Escolha novamente.");
+                    }
                     break;
                 case 7:
                     // Chamar método para devolver veículo

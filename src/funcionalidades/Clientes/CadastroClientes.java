@@ -37,9 +37,9 @@ public class CadastroClientes {
                 System.out.println("Número inserido é inválido");
             } else if (numeroDeCadastroExiste(numeroDeCadastro)) {
                 System.out.println("Cliente já cadastrado");
-                return; // Sai do método se o cliente já estiver cadastrado
+                return;
             } else {
-                break; // Sai do loop se o número do documento for válido e não existir no arquivo
+                break;
             }
         }
 
@@ -53,19 +53,18 @@ public class CadastroClientes {
             while (arquivoScanner.hasNextLine()) {
                 String linha = arquivoScanner.nextLine();
                 String[] partes = linha.split(";");
-                String numeroCadastrado = partes[1]; // Supondo que o número de cadastro está na segunda posição
+                String numeroCadastrado = partes[1];
                 if (numeroCadastrado.equals(numeroDeCadastro)) {
-                    return true; // Retorna true se o número de cadastro já existir no arquivo
+                    return true;
                 }
             }
         } catch (IOException e) {
             System.out.println("Erro ao ler arquivo: " + e.getMessage());
         }
-        return false; // Retorna false se o número de cadastro não for encontrado
+        return false;
     }
 
     private void salvarClienteNoArquivo(Cliente cliente) {
-        // Verifica se o arquivo já existe e cria se necessário
         File arquivo = new File(CAMINHO_ARQUIVO);
         if (!arquivo.exists()) {
             try {
@@ -76,7 +75,6 @@ public class CadastroClientes {
             }
         }
 
-        // Salva o cliente no arquivo
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(arquivo, true))) {
             writer.write(cliente.getNome() + ";" + cliente.getNumeroDeCadastro() + ";" + cliente.getTipoDoc());
             writer.newLine();

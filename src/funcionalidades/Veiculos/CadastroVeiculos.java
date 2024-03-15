@@ -20,7 +20,7 @@ public class CadastroVeiculos {
 
         System.out.println("Insira o ano do veículo: ");
         int ano = scanner.nextInt();
-        scanner.nextLine(); // Limpar o buffer do scanner
+        scanner.nextLine();
 
         System.out.println("Insira a placa do veículo: ");
         String placa = scanner.nextLine();
@@ -30,15 +30,15 @@ public class CadastroVeiculos {
             return;
         }
 
-        // Solicitar o tipo de veículo
+
         System.out.println("Insira o tipo de veículo (PEQUENO/MEDIO/SUV): ");
         String tipoStr = scanner.nextLine();
         Veiculo.TipoDeVeiculo tipo = Veiculo.TipoDeVeiculo.valueOf(tipoStr.toUpperCase());
 
-        // Criar o objeto Veiculo com as informações fornecidas
+
         Veiculo veiculo = new Veiculo(modelo, marca, ano, placa, tipo);
 
-        // Salvar o veículo no arquivo
+
         salvarVeiculoNoArquivo(veiculo);
         System.out.println("Veículo cadastrado com sucesso.");
     }
@@ -48,7 +48,7 @@ public class CadastroVeiculos {
             while (arquivoScanner.hasNextLine()) {
                 String linha = arquivoScanner.nextLine();
                 String[] partes = linha.split(";");
-                String placaCadastrada = partes[3]; // Supondo que a placa está na quarta posição
+                String placaCadastrada = partes[3];
                 if (placaCadastrada.equals(placa)) {
                     return true;
                 }
@@ -60,7 +60,7 @@ public class CadastroVeiculos {
     }
 
     private void salvarVeiculoNoArquivo(Veiculo veiculo) {
-        // Verifica se o arquivo já existe e cria se necessário
+
         File arquivo = new File(CAMINHO_ARQUIVO);
         if (!arquivo.exists()) {
             try {
@@ -71,7 +71,7 @@ public class CadastroVeiculos {
             }
         }
 
-        // Salva o veículo no arquivo
+
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(arquivo, true))) {
             writer.write(veiculo.getModelo() + ";" + veiculo.getMarca() + ";" + veiculo.getAno() + ";" +
                     veiculo.getPlaca() + ";" + veiculo.getTipo());
