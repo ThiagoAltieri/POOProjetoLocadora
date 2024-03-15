@@ -1,5 +1,1 @@
-45592133805,PLACA,indisponivel,SÃO PAULO,15/03/2024 15:38:15
-,45592133805,indisponivel
-45592133805,1234,indisponivel
-45592133805,1234,indisponivel,SÃO PAULO,15/03/2024 17:55:05
-Placa: PLACATESTE, Local de Retirada: SÃO PAULO, Data de Retirada: 15032024, Tipo de Veículo: PEQUENO, CPF: 45592133804, Data da Locação: 15/03/2024
+Placa: PLACATESTE, Local de Retirada: SÃO PAULO, Data e Hora de Retirada: 15032024, Tipo de Veículo: PEQUENO, CPF: 45592133804, Data da Locação: 15/03/2024 19:56

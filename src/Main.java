@@ -1,5 +1,3 @@
-package funcionalidades;
-
 import funcionalidades.Clientes.AlterarCliente;
 import funcionalidades.Clientes.CadastroClientes;
 import funcionalidades.Veiculos.AlterarVeiculos;
@@ -7,7 +5,7 @@ import funcionalidades.Veiculos.BuscarVeiculos;
 import funcionalidades.Veiculos.CadastroVeiculos;
 import funcionalidades.Aluguel.AluguelCPF.Menu;
 import funcionalidades.Aluguel.AluguelCNPJ.MenuCNPJ;
-
+import funcionalidades.Devolucao.DevolucaoVeiculo;
 
 import java.util.Scanner;
 
@@ -20,9 +18,9 @@ public class Main {
         CadastroVeiculos cadastroVeiculos = new CadastroVeiculos();
         BuscarVeiculos buscarVeiculos = new BuscarVeiculos();
         AlterarVeiculos alterarVeiculos = new AlterarVeiculos();
-
         Menu menuCPF = new Menu();
         MenuCNPJ menuCNPJ = new MenuCNPJ();
+        DevolucaoVeiculo devolucaoVeiculo = new DevolucaoVeiculo();
 
         int opcao;
         do {
@@ -73,7 +71,21 @@ public class Main {
                     }
                     break;
                 case 7:
-                    // Chamar método para devolver veículo
+                    System.out.println("Por favor, insira a placa do veículo:");
+                    String placa = scanner.nextLine();
+                    System.out.println("Você é uma pessoa física ou pessoa jurídica?");
+                    System.out.println("1. Pessoa Física");
+                    System.out.println("2. Pessoa Jurídica");
+                    int tipoClienteDevolucao = scanner.nextInt();
+                    scanner.nextLine();
+
+                    if (tipoClienteDevolucao == 1) {
+                        devolucaoVeiculo.devolverVeiculo(placa, "FISICA");
+                    } else if (tipoClienteDevolucao == 2) {
+                        devolucaoVeiculo.devolverVeiculo(placa, "JURIDICA");
+                    } else {
+                        System.out.println("Opção inválida. Devolução cancelada.");
+                    }
                     break;
                 case 8:
                     System.out.println("Encerrando o programa...");
