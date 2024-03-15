@@ -1,7 +1,11 @@
 package funcionalidades;
 
+
 // TODO criar uma forma de solução para caso a pessoa inclua o tipo do veículo fora das opções do enum
 
+import funcionalidades.Aluguel.AluguelCPF.AluguelCPF;
+import funcionalidades.Aluguel.AluguelCPF.MenuAluguelCPF;
+import funcionalidades.Aluguel.AluguelCPF.ValidaClienteEVeiculo;
 import funcionalidades.Clientes.AlterarCliente;
 import funcionalidades.Clientes.CadastroClientes;
 import funcionalidades.Veiculos.AlterarVeiculos;
@@ -19,6 +23,9 @@ public class Main {
         CadastroVeiculos cadastroVeiculos = new CadastroVeiculos(); // Adicionando instância de CadastroVeiculos
         BuscarVeiculos buscarVeiculos = new BuscarVeiculos(); // Adicionando instância de BuscarVeiculos
         AlterarVeiculos alterarVeiculos = new AlterarVeiculos();
+        AluguelCPF aluguelCPF = new AluguelCPF();
+        MenuAluguelCPF menuAluguelCPF = new MenuAluguelCPF();
+        ValidaClienteEVeiculo validaClienteEVeiculo = new ValidaClienteEVeiculo();
 
         int opcao;
         do {
@@ -54,7 +61,7 @@ public class Main {
                     alterarCliente.alterarClientePorCPF(cpf);
                     break;
                 case 6:
-                    // Chamar método para alugar veículo
+                    ;
                     break;
                 case 7:
                     // Chamar método para devolver veículo
